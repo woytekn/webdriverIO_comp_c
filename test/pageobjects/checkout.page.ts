@@ -1,4 +1,6 @@
-class CheckoutPage {
+import Page from './page';
+
+class CheckoutPage extends Page {
 	/**
 	 * define selectors using getter methods
 	 */

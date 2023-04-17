@@ -10,4 +10,8 @@ export default class Page {
 	public open(path: string) {
 		return browser.url(`https://www.saucedemo.com/${path}`);
 	}
+
+	public async waitForPageToLoad() {
+		await $('body').waitForDisplayed();
+	}
 }

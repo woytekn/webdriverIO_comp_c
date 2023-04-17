@@ -1,4 +1,6 @@
-class OrderCompletePage {
+import Page from './page';
+
+class OrderCompletePage extends Page {
 	/**
 	 * define selectors using getter methods
 	 */

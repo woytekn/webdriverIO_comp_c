@@ -19,6 +19,7 @@ describe('My Login application', () => {
 
 		// Open cart and click checkout
 		await CartPage.clickCheckout();
+		await CheckoutPage.waitForPageToLoad();
 
 		// Fill the form with information
 		await CheckoutPage.fillForm(
@@ -31,6 +32,7 @@ describe('My Login application', () => {
 		await CheckoutPage.clickFinish();
 
 		// Assert if the order is completed
+		await OrderCompletePage.waitForPageToLoad();
 		await expect(OrderCompletePage.orderCompleteHeader).toHaveTextContaining(
 			'Thank you for your order!'
 		);

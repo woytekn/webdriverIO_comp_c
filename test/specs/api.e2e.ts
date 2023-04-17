@@ -21,6 +21,7 @@ describe('GET Request Test', () => {
 			completed: false,
 		});
 	});
+
 	it('should return the correct mocked object', async () => {
 		browser.url('https://jsonplaceholder.typicode.com/todos/1/');
 		const response = await browser.execute(async () => {
@@ -40,7 +41,7 @@ describe('GET Request Test', () => {
 		expect(response.data).toEqual(mockResponse);
 	});
 
-	it('should not display the Tax Team Lead position when mock data is used', async () => {
+	it('should not display the Tax Team Lead position when mock data are used', async () => {
 		await browser.url('https://getir.com/us');
 		const taxTeamLeadDiv = await browser.$(
 			testData.testGetirData.taxTeamLeadLocator
