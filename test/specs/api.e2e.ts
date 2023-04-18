@@ -1,6 +1,22 @@
 const mockResponse = require('../mocks/mocks.json');
+const mockReqResponse = require('../mocks/reqMock.json');
+
 import GetirPage from '../pageobjects/getir.page';
 import testData from '../test.data';
+
+const mockReqResp = {
+	data: {
+		id: 2,
+		email: 'janet.weaver@reqres.in',
+		first_name: 'Janet',
+		last_name: 'Weaver',
+		avatar: 'https://reqres.in/img/faces/2-image.jpg',
+	},
+	support: {
+		url: 'https://reqres.in/#support-heading',
+		text: 'To keep ReqRes free, contributions towards server costs are appreciated!',
+	},
+};
 
 describe('GET Request Test', () => {
 	it('should return the correct object', async () => {
@@ -55,5 +71,19 @@ describe('GET Request Test', () => {
 		mockCareerPage.respond(mockResponse);
 		await GetirPage.searchAndPressEnter(testData.testGetirData.jobPosition);
 		expect(await taxTeamLeadDiv.isDisplayed()).toBeFalsy();
+	});
+
+	it('should return the correct object', async () => {
+		browser.url('https://reqres.in/');
+		const response = await browser.execute(async () => {
+			const res = await fetch('https://reqres.in/api/users/2');
+			return {
+				status: res.status,
+				data: await res.json(),
+			};
+		});
+		console.log(response);
+		expect(response.status).toEqual(200);
+		expect(response.data).toEqual(mockReqResp);
 	});
 });

@@ -22,6 +22,10 @@ class GetirPage {
 		return $('div[name="Tax Team Lead"]');
 	}
 
+	public get reqUserBtn() {
+		return $('[data-id="users-single"]');
+	}
+
 	/**
 	 * define methods using defined locators
 	 */
@@ -58,6 +62,10 @@ class GetirPage {
 	public async isTaxTeamLeadVisible(): Promise<boolean> {
 		const styleProperty = await this.turkeyTaxTeamLead.getCSSProperty('style');
 		return styleProperty.value.indexOf('none') === -1;
+	}
+
+	public async clickUserBtn() {
+		(await this.reqUserBtn).click();
 	}
 }
 
